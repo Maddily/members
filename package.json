@@ -1,0 +1,20 @@
+{
+  "name": "members",
+  "version": "1.0.0",
+  "description": "This is an exclusive clubhouse where members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it.",
+  "homepage": "https://github.com/Maddily/members#readme",
+  "bugs": {
+    "url": "https://github.com/Maddily/members/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maddily/members.git"
+  },
+  "license": "ISC",
+  "author": "Mayada Saeed",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
