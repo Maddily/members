@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head") %>
+  </head>
+  <body>
+    <form id="sign-up" method="post" action="/sign-up">
+      <div class="name">
+        <div class="first-name">
+          <label for="first-name">First name</label>
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            placeholder="Your first name"
+            required
+          />
+        </div>
+        <div class="last-name">
+          <label for="last-name">Last name</label>
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            placeholder="Your last name"
+            required
+          />
+        </div>
+      </div>
+      <div class="username">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Your username"
+          required
+        />
+      </div>
+      <div class="password">
+        <label for="password">password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+      <div class="confirm-password">
+        <label for="confirm-password">Confirm password</label>
+        <input
+          type="password"
+          name="confirm-password"
+          id="confirm-password"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+      <button>Sign up</button>
+    </form>
+  </body>
+</html>
