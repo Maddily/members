@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head") %>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <div class="username">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Your username"
+          required
+        />
+        <!-- Display error message in req.session.messages -->
+        <% if (locals.messages.length && messages[0].includes("username")) { %>
+          <p><%= messages[0] %></p>
+        <% } %>
+      </div>
+      <div class="password">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="••••••••"
+          required
+        />
+        <!-- Display error message in req.session.messages -->
+        <% if (locals.messages.length > 1) { %>
+          <p><%= messages[1] %></p>
+        <% } else if (locals.messages.length && messages[0].includes("password")) { %>
+          <p><%= messages[0] %></p>
+        <% } %>
+      </div>
+      <button>Login</button>
+      <p>No account? <a href="/sign-up">Sign up</a></p>
+      <p>Forgot your password? <a href="/reset-password">Reset</a></p>
+    </form>
+  </body>
+</html>
