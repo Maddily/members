@@ -32,4 +32,22 @@ async function signUpPost(req, res, next) {
   }
 }
 
-module.exports = { signUpGet, signUpPost };
+function loginGet(req, res) {
+  res.render("login", { title: "Login", messages: req.flash("messages") });
+}
+
+function loginPost(req, res, next) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    next();
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
+module.exports = { signUpGet, signUpPost, loginGet, loginPost };
