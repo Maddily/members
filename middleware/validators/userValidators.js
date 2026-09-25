@@ -24,4 +24,9 @@ const validateSignUp = [
     }),
 ];
 
-module.exports = { validateSignUp };
+const validateLogin = [
+  body("username").notEmpty().withMessage("Username is required."),
+  body("password").notEmpty().withMessage("Password is required."),
+];
+
+module.exports = { validateSignUp, validateLogin };
