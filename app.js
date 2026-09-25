@@ -16,6 +16,10 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Use flash middleware for flash messages
+const flash = require("connect-flash");
+app.use(flash());
+
 // Require the entire Passport config module so app.js knows about it
 require("./config/passport");
 
