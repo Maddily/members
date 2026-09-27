@@ -13,13 +13,12 @@
           name="username"
           id="username"
           placeholder="Your username"
-          required
         />
-        <!-- Display error message in req.session.messages -->
-        <% if (locals.messages.length && messages[0].includes("username")) { %>
-          <p><%= messages[0] %></p>
-        <% } %>
       </div>
+      <!-- Display flash error message -->
+      <% if (locals.messages.length && messages[0].username) { %>
+        <p><%= messages[0].username %></p>
+      <% } %>
       <div class="password">
         <label for="password">Password</label>
         <input
@@ -27,15 +26,12 @@
           name="password"
           id="password"
           placeholder="••••••••"
-          required
         />
-        <!-- Display error message in req.session.messages -->
-        <% if (locals.messages.length > 1) { %>
-          <p><%= messages[1] %></p>
-        <% } else if (locals.messages.length && messages[0].includes("password")) { %>
-          <p><%= messages[0] %></p>
-        <% } %>
       </div>
+      <!-- Display flash error message -->
+      <% if (locals.messages.length && messages[0].password) { %>
+        <p><%= messages[0].password %></p>
+      <% } %>
       <button>Login</button>
       <p>No account? <a href="/sign-up">Sign up</a></p>
       <p>Forgot your password? <a href="/reset-password">Reset</a></p>
