@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head") %>
+  </head>
+  <body>
+    <h1>Join the club</h1>
+    <form action="/join" method="post">
+      <div class="passcode">
+        <label for="passcode"><p>Enter the secret passcode</p></label>
+        <input
+          type="password"
+          name="passcode"
+          id="passcode"
+          placeholder="••••••••"
+        />
+      </div>
+      <% if (locals.messages) { %>
+        <p><%= messages[0] %></p>
+      <% } %>
+      <button>Join</button>
+      <a href="/">Go to homepage</a>
+    </form>
+  </body>
+</html>
