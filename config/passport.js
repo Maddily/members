@@ -11,13 +11,21 @@ async function verify(req, username, password, done) {
     );
     const user = rows[0];
     if (!user) {
-      return done(null, false, req.flash("messages", "Incorrect username"));
+      return done(
+        null,
+        false,
+        req.flash("messages", { username: "Incorrect username" })
+      );
     }
 
     // Validate the password
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return done(null, false, req.flash("messages", "Incorrect password"));
+      return done(
+        null,
+        false,
+        req.flash("messages", { password: "Incorrect password" })
+      );
     }
 
     return done(null, user);
