@@ -21,7 +21,8 @@ const validateSignUp = [
     .withMessage("Confirm password is required.")
     .custom((value, { req }) => {
       return value === req.body.password;
-    }),
+    })
+    .withMessage("Passwords do not match."),
 ];
 
 const validateLogin = [
