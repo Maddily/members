@@ -13,9 +13,12 @@
             name="first-name"
             id="first-name"
             placeholder="Your first name"
-            required
           />
         </div>
+        <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0]["first-name"]) { %>
+          <p><%= messages[0]["first-name"] %></p>
+        <% } %>
         <div class="last-name">
           <label for="last-name">Last name</label>
           <input
@@ -23,9 +26,12 @@
             name="last-name"
             id="last-name"
             placeholder="Your last name"
-            required
           />
         </div>
+        <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0]["last-name"]) { %>
+          <p><%= messages[0]["last-name"] %></p>
+        <% } %>
       </div>
       <div class="username">
         <label for="username">Username</label>
@@ -34,9 +40,12 @@
           name="username"
           id="username"
           placeholder="Your username"
-          required
         />
       </div>
+      <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0].username) { %>
+          <p><%= messages[0].username %></p>
+        <% } %>
       <div class="password">
         <label for="password">Password</label>
         <input
@@ -44,9 +53,12 @@
           name="password"
           id="password"
           placeholder="••••••••"
-          required
         />
       </div>
+      <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0].password) { %>
+          <p><%= messages[0].password %></p>
+        <% } %>
       <div class="confirm-password">
         <label for="confirm-password">Confirm password</label>
         <input
@@ -54,9 +66,12 @@
           name="confirm-password"
           id="confirm-password"
           placeholder="••••••••"
-          required
         />
       </div>
+      <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0]["confirm-password"]) { %>
+          <p><%= messages[0]["confirm-password"] %></p>
+        <% } %>
       <button>Sign up</button>
     </form>
   </body>
