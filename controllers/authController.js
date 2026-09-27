@@ -3,14 +3,19 @@ const pool = require("../db/pool");
 const { matchedData, validationResult } = require("express-validator");
 
 function signUpGet(req, res) {
-  res.render("sign-up", { title: "Sign up" });
+  res.render("sign-up", { title: "Sign up", messages: req.flash("messages") });
 }
 
 async function signUpPost(req, res, next) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      const errorMap = {};
+      for (const error of errors.array()) {
+        errorMap[error.path] = error.msg;
+      }
+      req.flash("messages", errorMap);
+      return req.session.save(() => res.redirect("/sign-up"));
     }
 
     const {
@@ -40,7 +45,12 @@ function loginPost(req, res, next) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      const errorMap = {};
+      for (const error of errors.array()) {
+        errorMap[error.path] = error.msg;
+      }
+      req.flash("messages", errorMap);
+      return req.session.save(() => res.redirect("/login"));
     }
 
     next();
