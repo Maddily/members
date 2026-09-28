@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Use flash middleware for flash messages
 const flash = require("connect-flash");
 const usersRouter = require("./routes/users-router");
+const messageRouter = require("./routes/message-router");
 app.use(flash());
 
 // Require the entire Passport config module so app.js knows about it
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public/images")));
 app.use("/", authRouter);
 app.use("/", usersRouter);
+app.use("/", messageRouter);
 
 app.listen(PORT, (error) => {
   if (error) throw error;
