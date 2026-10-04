@@ -60,4 +60,13 @@ function loginPost(req, res, next) {
   }
 }
 
-module.exports = { signUpGet, signUpPost, loginGet, loginPost };
+function logoutPost(req, res, next) {
+  req.logout((error) => {
+    if (error) {
+      return next(error);
+    }
+    res.redirect("/");
+  });
+}
+
+module.exports = { signUpGet, signUpPost, loginGet, loginPost, logoutPost };
