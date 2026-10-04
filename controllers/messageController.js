@@ -1,3 +1,4 @@
+const { validationResult, matchedData } = require("express-validator");
 const pool = require("../db/pool");
 
 async function messageListGet(req, res) {
@@ -38,4 +39,39 @@ async function deletePost(req, res, next) {
   }
 }
 
-module.exports = { messageListGet, deletePost };
+function newMessageGet(req, res) {
+  res.render("new-message", {
+    title: "New message",
+    messages: req.flash("messages"),
+  });
+}
+
+async function newMessagePost(req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const errorMap = {};
+      for (const error of errors.array()) {
+        errorMap[error.path] = error.msg;
+      }
+
+      req.flash("messages", errorMap);
+      return req.session.save(() => res.redirect("/new-message"));
+    }
+
+    const { title, text } = matchedData(req);
+
+    await pool.query(
+      `
+      INSERT INTO messages (title, text, user_id) VALUES ($1, $2, $3)
+      `,
+      [title, text, req.user.id]
+    );
+    return res.redirect("/");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
+module.exports = { messageListGet, deletePost, newMessageGet, newMessagePost };
