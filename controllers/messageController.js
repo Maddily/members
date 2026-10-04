@@ -50,7 +50,7 @@ async function deletePost(req, res, next) {
       [id]
     );
 
-    return res.redirect("/");
+    return res.redirect(req.get("Referer"));
   } catch (error) {
     console.error(error);
     next(error);
