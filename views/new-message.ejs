@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("partials/head") %>
+</head>
+
+<body>
+  <%- include("partials/header") %>
+  <h1>Write a message</h1>
+  <form action="/new-message" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <!-- Display flash error message -->
+    <% if (locals.messages.length && messages[0].title) { %>
+    <p><%= messages[0].title %></p>
+    <% } %>
+    <div>
+      <label for="text">Message</label>
+      <textarea name="text" id="text"></textarea>
+    </div>
+    <!-- Display flash error message -->
+    <% if (locals.messages.length && messages[0].text) { %>
+    <p><%= messages[0].text %></p>
+    <% } %>
+    <button>Send</button>
+    <a href="/">Go to homepage</a>
+  </form>
+</body>
+
+</html>
