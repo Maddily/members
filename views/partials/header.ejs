@@ -1,0 +1,18 @@
+<header>
+  <a href="/">
+    <img src="/logo.svg" />
+  </a>
+  <% if (locals.user) { %>
+  <nav>
+    <a href="/new-message">Write a message</a>
+    <a href="/my-messages">My messages</a>
+    <% if (locals.user && !user.is_member) { %>
+    <a href="/join">Join the club</a>
+    <% } %>
+    <a href="/account">Account</a>
+    <form action="/logout" method="post">
+      <button>Logout</button>
+    </form>
+  </nav>
+  <% } %>
+</header>
