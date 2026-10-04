@@ -4,13 +4,14 @@ const {
   signUpGet,
   loginGet,
   loginPost,
+  logoutPost,
 } = require("../controllers/authController");
 const {
   validateSignUp,
   validateLogin,
 } = require("../middleware/validators/userValidators");
 const passport = require("passport");
-const { checkNotAuthenticated } = require("../middleware/auth");
+const { checkNotAuthenticated, checkAuthenticated } = require("../middleware/auth");
 
 const authRouter = Router();
 
@@ -44,5 +45,6 @@ authRouter.post(
     })(req, res, next);
   }
 );
+authRouter.post("/logout", checkAuthenticated, logoutPost);
 
 module.exports = authRouter;
