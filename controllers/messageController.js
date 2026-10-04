@@ -5,7 +5,7 @@ async function messageListGet(req, res) {
   const { rows, rowCount } = await pool.query(
     `
       SELECT messages.id AS id, title, text, created_at, user_id, users.username AS username, (user_id = $1) AS is_author
-      FROM messages 
+      FROM messages
       JOIN users ON users.id = messages.user_id
     `,
     [req.user.id]
@@ -16,6 +16,24 @@ async function messageListGet(req, res) {
   return res.render("home", {
     title: "Home",
     isMemberOrAdmin,
+    messages: rows,
+    noMessages: rowCount === 0,
+  });
+}
+
+async function userMessageListGet(req, res) {
+  const { rows, rowCount } = await pool.query(
+    `
+      SELECT messages.id AS id, title, text, created_at, user_id, users.username AS username
+      FROM messages
+      JOIN users ON users.id = messages.user_id
+      WHERE users.id = $1
+    `,
+    [req.user.id]
+  );
+
+  return res.render("my-messages", {
+    title: "My messages",
     messages: rows,
     noMessages: rowCount === 0,
   });
@@ -74,4 +92,10 @@ async function newMessagePost(req, res) {
   }
 }
 
-module.exports = { messageListGet, deletePost, newMessageGet, newMessagePost };
+module.exports = {
+  messageListGet,
+  userMessageListGet,
+  deletePost,
+  newMessageGet,
+  newMessagePost,
+};
