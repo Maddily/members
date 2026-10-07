@@ -50,6 +50,7 @@ app.use(passport.session());
 // Make user data available to all views
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  res.locals.currentPath = req.path;
   next();
 });
 
