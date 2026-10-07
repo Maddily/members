@@ -54,6 +54,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, "public/styles")));
+app.use(express.static(path.join(__dirname, "public/scripts")));
 app.use("/", authRouter);
 app.use("/", usersRouter);
 app.use("/", messageRouter);
