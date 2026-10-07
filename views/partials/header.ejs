@@ -1,16 +1,29 @@
 <header>
-  <a href="/">
+  <a href="/" class="logo">
     <img src="/logo.svg" />
   </a>
   <% if (locals.user) { %>
+  <button class="menu-btn">
+    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 6l16 0" />
+      <path d="M4 12l16 0" />
+      <path d="M4 18l16 0" />
+    </svg>
+    <svg class="x-icon hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </svg>
+  </button>
   <nav>
-    <a href="/new-message">Write a message</a>
-    <a href="/my-messages">My messages</a>
+    <a href="/new-message" class="nav-link" <%- currentPath === "/new-message" ? 'aria-current="page"' : '' %>>write a message</a>
+    <a href="/my-messages" class="nav-link" <%- currentPath === "/my-messages" ? 'aria-current="page"' : '' %>>my messages</a>
     <% if (locals.user && !user.is_member) { %>
-    <a href="/join">Join the club</a>
+    <a href="/join" class="nav-link" <%- currentPath === "/join" ? 'aria-current="page"' : '' %>>join the club</a>
     <% } %>
     <form action="/logout" method="post">
-      <button>Logout</button>
+      <button class="logout-btn">logout</button>
     </form>
   </nav>
   <% } %>
