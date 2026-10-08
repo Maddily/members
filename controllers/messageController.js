@@ -15,6 +15,7 @@ async function messageListGet(req, res) {
 
   return res.render("home", {
     title: "Home",
+    stylesheet: "home",
     isMemberOrAdmin,
     messages: rows,
     noMessages: rowCount === 0,
