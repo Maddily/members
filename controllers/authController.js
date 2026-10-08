@@ -38,7 +38,11 @@ async function signUpPost(req, res, next) {
 }
 
 function loginGet(req, res) {
-  res.render("login", { title: "login", messages: req.flash("messages") });
+  res.render("login", {
+    title: "login",
+    stylesheet: "login",
+    messages: req.flash("messages"),
+  });
 }
 
 function loginPost(req, res, next) {
