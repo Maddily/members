@@ -7,24 +7,26 @@
 
 <body>
   <%- include("partials/header") %>
-  <h1>My messages</h1>
-  <% if (locals.noMessages) { %>
-  <p>No messages yet.</p>
-  <% } else { %>
-  <% for (const message of messages) { %>
-  <article class="message">
-    <h2><%= message.title %></h2>
-    <p><%= message.text %></p>
-    <footer>
-      <p>From: <%= message.username %></p>
-      <p>Sent: <time datetime="<%= message.created_at.toISOString() %>"><%= message.created_at.toLocaleString() %></time></p>
-      <form action="/delete/<%= message.id %>" method="POST">
-        <button>Delete</button>
-      </form>
-    </footer>
-  </article>
-  <% } %>
-  <% } %>
+  <main>
+    <h1>my messages.</h1>
+    <% if (locals.noMessages) { %>
+    <p class="no-messages">no messages yet. <a class="write-new" href="/new-message">write</a> the first one.</p>
+    <% } else { %>
+    <% for (const message of messages) { %>
+    <article class="message">
+      <h2 class="title"><%= message.title %></h2>
+      <p class="text"><%= message.text %></p>
+      <footer>
+        <p class="from">from: <span><%= message.username %></span></p>
+        <p class="sent">sent: <time datetime="<%= message.created_at.toISOString() %>"><%= message.created_at.toLocaleString() %></time></p>
+        <form action="/delete/<%= message.id %>" method="POST">
+          <button class="delete-btn">delete</button>
+        </form>
+      </footer>
+    </article>
+    <% } %>
+    <% } %>
+  </main>
 </body>
 
 </html>
