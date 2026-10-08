@@ -7,52 +7,65 @@
 
 <body>
   <%- include("partials/header") %>
-  <h1>Sign up</h1>
-  <form id="sign-up" method="post" action="/sign-up">
-    <div class="name">
-      <div class="first-name">
-        <label for="first-name">First name</label>
-        <input type="text" name="first-name" id="first-name" placeholder="Your first name" />
+  <main>
+    <h1>sign up</h1>
+    <form id="sign-up" method="post" action="/sign-up">
+      <div class="name">
+        <div class="first-name-wrapper">
+          <div class="first-name">
+            <label for="first-name">first name</label>
+            <input aria-describedby="first-name-error" class="<%= locals.messages.length && messages[0]['first-name'] && 'error' %>" type="text" name="first-name" id="first-name" placeholder="your first name" />
+          </div>
+          <!-- Display flash error message -->
+          <% if (locals.messages.length && messages[0]["first-name"]) { %>
+          <p id="first-name-error" class="error-msg"><%= messages[0]["first-name"] %></p>
+          <% } %>
+        </div>
+        <div class="last-name-wrapper">
+          <div class="last-name">
+            <label for="last-name">last name</label>
+            <input aria-describedby="last-name-error" class="<%= locals.messages.length && messages[0]['last-name'] && 'error' %>" type="text" name="last-name" id="last-name" placeholder="your last name" />
+          </div>
+          <!-- Display flash error message -->
+          <% if (locals.messages.length && messages[0]["last-name"]) { %>
+          <p id="last-name-error" class="error-msg"><%= messages[0]["last-name"] %></p>
+          <% } %>
+        </div>
       </div>
-      <!-- Display flash error message -->
-      <% if (locals.messages.length && messages[0]["first-name"]) { %>
-      <p><%= messages[0]["first-name"] %></p>
-      <% } %>
-      <div class="last-name">
-        <label for="last-name">Last name</label>
-        <input type="text" name="last-name" id="last-name" placeholder="Your last name" />
+      <div class="username-wrapper">
+        <div class="username">
+          <label for="username">username</label>
+          <input aria-describedby="username-error" class="<%= locals.messages.length && messages[0].username && 'error' %>" type="text" name="username" id="username" placeholder="your username" />
+        </div>
+        <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0].username) { %>
+        <p id="username-error" class="error-msg"><%= messages[0].username %></p>
+        <% } %>
       </div>
-      <!-- Display flash error message -->
-      <% if (locals.messages.length && messages[0]["last-name"]) { %>
-      <p><%= messages[0]["last-name"] %></p>
-      <% } %>
-    </div>
-    <div class="username">
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" placeholder="Your username" />
-    </div>
-    <!-- Display flash error message -->
-    <% if (locals.messages.length && messages[0].username) { %>
-    <p><%= messages[0].username %></p>
-    <% } %>
-    <div class="password">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" placeholder="••••••••" />
-    </div>
-    <!-- Display flash error message -->
-    <% if (locals.messages.length && messages[0].password) { %>
-    <p><%= messages[0].password %></p>
-    <% } %>
-    <div class="confirm-password">
-      <label for="confirm-password">Confirm password</label>
-      <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" />
-    </div>
-    <!-- Display flash error message -->
-    <% if (locals.messages.length && messages[0]["confirm-password"]) { %>
-    <p><%= messages[0]["confirm-password"] %></p>
-    <% } %>
-    <button>Sign up</button>
-  </form>
+      <div class="password-wrapper">
+        <div class="password">
+          <label for="password">password</label>
+          <input aria-describedby="password-error" class="<%= locals.messages.length && messages[0].password && 'error' %>" type="password" name="password" id="password" placeholder="••••••••" />
+        </div>
+        <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0].password) { %>
+        <p id="password-error" class="error-msg"><%= messages[0].password %></p>
+        <% } %>
+      </div>
+      <div class="confirm-password-wrapper">
+        <div class="confirm-password">
+          <label for="confirm-password">confirm password</label>
+          <input aria-describedby="confirm-password-error" class="<%= locals.messages.length && messages[0]['confirm-password'] && 'error' %>" type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" />
+        </div>
+        <!-- Display flash error message -->
+        <% if (locals.messages.length && messages[0]["confirm-password"]) { %>
+        <p id="confirm-password-error" class="error-msg"><%= messages[0]["confirm-password"] %></p>
+        <% } %>
+      </div>
+      <button>sign up</button>
+      <p class="have-account">already have an account? <a href="/login">login</a></p>
+    </form>
+  </main>
 </body>
 
 </html>
