@@ -35,6 +35,7 @@ async function userMessageListGet(req, res) {
 
   return res.render("my-messages", {
     title: "My messages",
+    stylesheet: "home",
     messages: rows,
     noMessages: rowCount === 0,
   });
