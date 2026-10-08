@@ -1,0 +1,131 @@
+main {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 1.1rem;
+}
+
+.no-messages {
+  font-size: 14px;
+  color: #898781;
+  text-align: center;
+  padding: 3rem;
+}
+
+.write-new {
+  color: #898781;
+}
+
+.message {
+  padding: 14px 0;
+  border-bottom: 0.5px solid rgba(204, 204, 204, 70%);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #0b0b0b;
+}
+
+.text {
+  font-size: 14px;
+  color: #52514e;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.message footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #898781;
+}
+
+.from span {
+  color: #52514e;
+}
+
+.message form {
+  margin-left: auto;
+  padding: 0;
+  width: fit-content;
+}
+
+.delete-btn {
+  font-size: 11px;
+  padding: 2px 8px;
+  color: #8e2626;
+  background: transparent;
+  border: 0.5px solid rgba(204, 204, 204, 90%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.delete-btn:hover {
+  background-color: #fcfcfb;
+}
+
+.delete-btn:active {
+  background-color: rgba(204, 204, 204, 70%);
+  transform: scale(0.98);
+}
+
+.delete-btn:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+@media (min-width: 640px) {
+  main {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 1.5rem;
+  }
+
+  .message {
+    padding: 1.25rem 0;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .message footer {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .delete-btn {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}
+
+@media (min-width: 1100px) {
+  main {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1300px) {
+  main {
+    max-width: 50%;
+  }
+}
