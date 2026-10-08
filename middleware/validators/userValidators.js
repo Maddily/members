@@ -2,32 +2,32 @@ const { body } = require("express-validator");
 const pool = require("../../db/pool");
 
 const validateSignUp = [
-  body("first-name").trim().notEmpty().withMessage("First name is required."),
-  body("last-name").trim().notEmpty().withMessage("Last name is required."),
+  body("first-name").trim().notEmpty().withMessage("first name is required."),
+  body("last-name").trim().notEmpty().withMessage("last name is required."),
   body("username")
     .trim()
     .notEmpty()
-    .withMessage("Username is required.")
+    .withMessage("username is required.")
     .custom(async (value) => {
       const { rowCount } = await pool.query(
         `SELECT * from users WHERE username = LOWER($1)`,
         [value]
       );
-      if (rowCount) throw new Error("Username already in use");
+      if (rowCount) throw new Error("username already in use");
     }),
-  body("password").notEmpty().withMessage("Password is required."),
+  body("password").notEmpty().withMessage("password is required."),
   body("confirm-password")
     .notEmpty()
-    .withMessage("Confirm password is required.")
+    .withMessage("confirm password is required.")
     .custom((value, { req }) => {
       return value === req.body.password;
     })
-    .withMessage("Passwords do not match."),
+    .withMessage("passwords do not match."),
 ];
 
 const validateLogin = [
-  body("username").notEmpty().withMessage("Username is required."),
-  body("password").notEmpty().withMessage("Password is required."),
+  body("username").notEmpty().withMessage("username is required."),
+  body("password").notEmpty().withMessage("password is required."),
 ];
 
 module.exports = { validateSignUp, validateLogin };

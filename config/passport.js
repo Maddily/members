@@ -14,7 +14,7 @@ async function verify(req, username, password, done) {
       return done(
         null,
         false,
-        req.flash("messages", { username: "Incorrect username" })
+        req.flash("messages", { username: "incorrect username" })
       );
     }
 
@@ -24,7 +24,7 @@ async function verify(req, username, password, done) {
       return done(
         null,
         false,
-        req.flash("messages", { password: "Incorrect password" })
+        req.flash("messages", { password: "incorrect password" })
       );
     }
 
