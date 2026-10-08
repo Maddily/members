@@ -80,9 +80,29 @@ main form a {
   text-decoration: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 400px) {
   main {
     margin: 0 auto;
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 450px) {
+  main {
+    margin: 0 auto;
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 550px) {
+  main {
+    margin: 0 auto;
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 640px) {
+  main {
     max-width: 50%;
     padding-top: 2.25rem;
   }
