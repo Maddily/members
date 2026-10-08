@@ -73,20 +73,13 @@ main form button:active {
   transform: scale(0.98);
 }
 
-.no-account,
-.forgot-pw {
+.no-account {
   font-size: 12px;
   color: #898781;
-  margin: 0 0 6px;
   text-align: center;
 }
 
-.forgot-pw {
-  margin: 0;
-}
-
-.no-account a,
-.forgot-pw a {
+.no-account a {
   color: #52514e;
 }
 
