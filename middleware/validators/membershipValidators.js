@@ -4,9 +4,9 @@ require("dotenv").config();
 const validateJoin = [
   body("passcode")
     .notEmpty()
-    .withMessage("Passcode is required.")
+    .withMessage("passcode is required.")
     .custom((value) => value === process.env.PASSCODE)
-    .withMessage("Incorrect passcode."),
+    .withMessage("incorrect passcode."),
 ];
 
 module.exports = validateJoin;
