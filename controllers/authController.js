@@ -3,7 +3,11 @@ const pool = require("../db/pool");
 const { matchedData, validationResult } = require("express-validator");
 
 function signUpGet(req, res) {
-  res.render("sign-up", { title: "sign up", messages: req.flash("messages") });
+  res.render("sign-up", {
+    title: "sign up",
+    stylesheet: "sign-up",
+    messages: req.flash("messages"),
+  });
 }
 
 async function signUpPost(req, res, next) {
