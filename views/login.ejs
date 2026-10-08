@@ -12,19 +12,19 @@
     <form action="/login" method="post">
       <div class="username">
         <label for="username">username</label>
-        <input aria-describedby="error" class="<%= locals.messages.length && messages[0].username && 'error' %>" type="text" name="username" id="username" placeholder="your username" autocomplete="username" />
+        <input aria-describedby="username-error" class="<%= locals.messages.length && messages[0].username && 'error' %>" type="text" name="username" id="username" placeholder="your username" autocomplete="username" />
       </div>
       <!-- Display flash error message -->
       <% if (locals.messages.length && messages[0].username) { %>
-      <p id="error" class="error-msg"><%= messages[0].username %></p>
+      <p id="username-error" class="error-msg"><%= messages[0].username %></p>
       <% } %>
       <div class="password">
         <label for="password">password</label>
-        <input aria-describedby="error" class="<%= locals.messages.length && messages[0].password && 'error' %>" type="password" name="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+        <input aria-describedby="password-error" class="<%= locals.messages.length && messages[0].password && 'error' %>" type="password" name="password" id="password" placeholder="••••••••" autocomplete="current-password" />
       </div>
       <!-- Display flash error message -->
       <% if (locals.messages.length && messages[0].password) { %>
-      <p id="error" class="error-msg"><%= messages[0].password %></p>
+      <p id="password-error" class="error-msg"><%= messages[0].password %></p>
       <% } %>
       <button>login</button>
       <p class="no-account">no account? <a href="/sign-up">sign up</a></p>
