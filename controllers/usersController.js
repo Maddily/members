@@ -2,7 +2,11 @@ const { validationResult } = require("express-validator");
 const pool = require("../db/pool");
 
 function joinGet(req, res) {
-  res.render("join", { title: "Join", messages: req.flash("messages") });
+  res.render("join", {
+    title: "Join",
+    stylesheet: "join",
+    messages: req.flash("messages"),
+  });
 }
 
 async function joinPost(req, res, next) {
