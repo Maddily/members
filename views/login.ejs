@@ -7,28 +7,29 @@
 
 <body>
   <%- include("partials/header") %>
-  <h1>Login</h1>
-  <form action="/login" method="post">
-    <div class="username">
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" placeholder="Your username" />
-    </div>
-    <!-- Display flash error message -->
-    <% if (locals.messages.length && messages[0].username) { %>
-    <p><%= messages[0].username %></p>
-    <% } %>
-    <div class="password">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" placeholder="••••••••" />
-    </div>
-    <!-- Display flash error message -->
-    <% if (locals.messages.length && messages[0].password) { %>
-    <p><%= messages[0].password %></p>
-    <% } %>
-    <button>Login</button>
-    <p>No account? <a href="/sign-up">Sign up</a></p>
-    <p>Forgot your password? <a href="/reset-password">Reset</a></p>
-  </form>
+  <main>
+    <h1>login.</h1>
+    <form action="/login" method="post">
+      <div class="username">
+        <label for="username">username</label>
+        <input aria-describedby="error" class="<%= locals.messages.length && messages[0].username && 'error' %>" type="text" name="username" id="username" placeholder="your username" autocomplete="username" />
+      </div>
+      <!-- Display flash error message -->
+      <% if (locals.messages.length && messages[0].username) { %>
+      <p id="error" class="error-msg"><%= messages[0].username %></p>
+      <% } %>
+      <div class="password">
+        <label for="password">password</label>
+        <input aria-describedby="error" class="<%= locals.messages.length && messages[0].password && 'error' %>" type="password" name="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <!-- Display flash error message -->
+      <% if (locals.messages.length && messages[0].password) { %>
+      <p id="error" class="error-msg"><%= messages[0].password %></p>
+      <% } %>
+      <button>login</button>
+      <p class="no-account">no account? <a href="/sign-up">sign up</a></p>
+    </form>
+  </main>
 </body>
 
 </html>
