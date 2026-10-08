@@ -7,20 +7,22 @@
 
 <body>
   <%- include("partials/header") %>
-  <h1>Join the club</h1>
-  <form action="/join" method="post">
-    <div class="passcode">
+  <main>
+    <h1>join the club.</h1>
+    <form action="/join" method="post">
       <label for="passcode">
-        <p>Enter the secret passcode</p>
+        enter the secret passcode
       </label>
-      <input type="password" name="passcode" id="passcode" placeholder="••••••••" />
-    </div>
-    <% if (locals.messages) { %>
-    <p><%= messages[0] %></p>
-    <% } %>
-    <button>Join</button>
-    <a href="/">Go to homepage</a>
-  </form>
+      <input aria-describedby="error" class="<%= locals.messages.length && 'error' %>" type="password" name="passcode" id="passcode" placeholder="••••••••" autocomplete="off" />
+      <% if (locals.messages.length) { %>
+      <p id="error" class="error-msg"><%= messages[0] %></p>
+      <% } %>
+      <footer>
+        <button>join</button>
+        <a href="/">go to homepage</a>
+      </footer>
+    </form>
+  </main>
 </body>
 
 </html>
