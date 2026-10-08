@@ -14,7 +14,7 @@ async function messageListGet(req, res) {
   const isMemberOrAdmin = req.user.is_member || req.user.is_admin;
 
   return res.render("home", {
-    title: "Home",
+    title: "home",
     stylesheet: "home",
     isMemberOrAdmin,
     messages: rows,
@@ -34,7 +34,7 @@ async function userMessageListGet(req, res) {
   );
 
   return res.render("my-messages", {
-    title: "My messages",
+    title: "my messages",
     stylesheet: "home",
     messages: rows,
     noMessages: rowCount === 0,
@@ -61,7 +61,7 @@ async function deletePost(req, res, next) {
 
 function newMessageGet(req, res) {
   res.render("new-message", {
-    title: "New message",
+    title: "new message",
     messages: req.flash("messages"),
   });
 }

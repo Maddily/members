@@ -3,7 +3,7 @@ const pool = require("../db/pool");
 
 function joinGet(req, res) {
   res.render("join", {
-    title: "Join",
+    title: "join",
     stylesheet: "join",
     messages: req.flash("messages"),
   });
