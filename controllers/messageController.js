@@ -7,6 +7,7 @@ async function messageListGet(req, res) {
       SELECT messages.id AS id, title, text, created_at, user_id, users.username AS username, (user_id = $1) AS is_author
       FROM messages
       JOIN users ON users.id = messages.user_id
+      ORDER BY created_at DESC, id DESC
     `,
     [req.user.id]
   );
@@ -29,6 +30,7 @@ async function userMessageListGet(req, res) {
       FROM messages
       JOIN users ON users.id = messages.user_id
       WHERE users.id = $1
+      ORDER BY created_at DESC, id DESC
     `,
     [req.user.id]
   );
