@@ -62,6 +62,7 @@ async function deletePost(req, res, next) {
 function newMessageGet(req, res) {
   res.render("new-message", {
     title: "new message",
+    stylesheet: "new-message",
     messages: req.flash("messages"),
   });
 }
