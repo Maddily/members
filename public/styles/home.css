@@ -83,6 +83,7 @@ h1 {
 
 @media (min-width: 640px) {
   main {
+    width: 100%;
     max-width: 70%;
     margin: 0 auto;
     padding-top: 2.25rem;
