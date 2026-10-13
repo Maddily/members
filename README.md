@@ -37,4 +37,5 @@ Built as part of [The Odin Project](https://www.theodinproject.com/) Node.js cur
 - Node.js and Express
 - EJS templates
 - PostgreSQL
+- Passport.js
 - Deployed on [Vercel](https://vercel.com/)
